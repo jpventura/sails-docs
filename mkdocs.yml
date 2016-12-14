@@ -1,0 +1,41 @@
+# Project information
+site_name: 'Sails.js Documentation'
+site_description: 'Realtime MVC Framework for Node.js'
+site_author: 'Mike McNeil'
+site_url: 'https://sailsjs.com'
+
+# Repository
+repo_name: 'GitHub'
+repo_url: 'https://github.com/balderdashy/sails-docs'
+
+# Copyright
+copyright: 'Copyright (c) 2012-2016 Mike McNeil'
+
+# Documentation and theme
+docs_dir: 'docs'
+theme: 'material'
+
+# Options
+extra:
+  version: '0.1.0'
+  logo: 'images/logo.png'
+  palette:
+    primary: 'indigo'
+    accent: 'light blue'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  i18n:
+    prev: 'Previous'
+    next: 'Next'
+  author:
+    github: 'balderdashy'
+    twitter: 'sailsjs'
+
+# Extensions
+markdown_extensions:
+  - codehilite(css_class=code)
+  - admonition
+  - toc:
+      permalink: '#'
+
