@@ -1,0 +1,4847 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="no-js ie6"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8"><![endif]-->
+<!--[if IE 9 ]><html class="no-js ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    
+      
+        <title>sails.sockets.socketRooms - Sails.js Documentation</title>
+      
+      
+      
+        <link rel="canonical" href="https://sailsjs.com/reference/websockets/sails.sockets/sails.sockets.socketRooms/">
+      
+      
+        <meta name="author" content="Mike McNeil">
+      
+    
+    <meta property="og:url" content="https://sailsjs.com/reference/websockets/sails.sockets/sails.sockets.socketRooms/">
+    <meta property="og:title" content="Sails.js Documentation">
+    <meta property="og:image" content="https://sailsjs.com/reference/websockets/sails.sockets/sails.sockets.socketRooms//../../../../images/logo.png">
+    <meta name="apple-mobile-web-app-title" content="Sails.js Documentation">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+      <link rel="apple-touch-icon" href="../../../../images/logo.png">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../assets/images/favicon-e565ddfa3b.ico">
+    <link rel="icon" type="image/x-icon" href="../../../../assets/images/favicon-e565ddfa3b.ico">
+    <style>
+      @font-face {
+      	font-family: 'Icon';
+      	src: url('../../../../assets/fonts/icon.eot?52m981');
+      	src: url('../../../../assets/fonts/icon.eot?#iefix52m981')
+               format('embedded-opentype'),
+      		   url('../../../../assets/fonts/icon.woff?52m981')
+               format('woff'),
+      		   url('../../../../assets/fonts/icon.ttf?52m981')
+               format('truetype'),
+      		   url('../../../../assets/fonts/icon.svg?52m981#icon')
+               format('svg');
+      	font-weight: normal;
+      	font-style: normal;
+      }
+    </style>
+    <link rel="stylesheet" href="../../../../assets/stylesheets/application-a422ff04cc.css">
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/palettes-05ab2406df.css">
+    
+    
+      
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Mono">
+      <style>
+        body, input {
+          font-family: 'Roboto', Helvetica, Arial, sans-serif;
+        }
+        pre, code {
+          font-family: 'Roboto Mono', 'Courier New', 'Courier', monospace;
+        }
+      </style>
+    
+    
+    <script src="../../../../assets/javascripts/modernizr-4ab42b99fd.js"></script>
+    
+  </head>
+  
+  
+  
+  <body class="palette-primary-indigo palette-accent-light-blue">
+    
+      
+      
+    
+    <div class="backdrop">
+      <div class="backdrop-paper"></div>
+    </div>
+    <input class="toggle" type="checkbox" id="toggle-drawer">
+    <input class="toggle" type="checkbox" id="toggle-search">
+    <label class="toggle-button overlay" for="toggle-drawer"></label>
+    <header class="header">
+      <nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        
+          <span class="path">
+            
+              
+                Websockets <i class="icon icon-link"></i>
+              
+            
+              
+                Sails.sockets <i class="icon icon-link"></i>
+              
+            
+          </span>
+        
+        sails.sockets.socketRooms
+      </div>
+    </div>
+    
+      
+      <div class="button button-twitter" role="button" aria-label="Twitter">
+        <a href="https://twitter.com/sailsjs" title="@sailsjs on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+      </div>
+    
+    
+      
+      <div class="button button-github" role="button" aria-label="GitHub">
+        <a href="https://github.com/balderdashy" title="@balderdashy on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+      </div>
+    
+    <div class="button button-search" role="button" aria-label="Search">
+      <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
+    </div>
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+    </header>
+    <main class="main">
+      
+      <div class="drawer">
+        <nav aria-label="Navigation">
+  
+  <a href="https://github.com/balderdashy/sails-docs" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="../../../../images/logo.png">
+        </div>
+      
+      <div class="name">
+        <strong>
+          Sails.js Documentation
+          <span class="version">
+            0.1.0
+          </span>
+        </strong>
+        
+          <br>
+          balderdashy/sails-docs
+        
+      </div>
+    </div>
+  </a>
+  <div class="scrollable">
+    <div class="wrapper">
+      
+        <ul class="repo">
+          <li class="repo-download">
+            
+            <a href="https://github.com/balderdashy/sails-docs/archive/0.1.0.zip" target="_blank" title="Download" data-action="download">
+              <i class="icon icon-download"></i> Download
+            </a>
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/balderdashy/sails-docs/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+      
+      <div class="toc">
+        <ul>
+          
+            
+  <li>
+    <a class="" title="Home" href="../../../..">
+      Home
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="FAQ" href="../../../../FAQ/">
+      FAQ
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="LICENSE" href="../../../../LICENSE/">
+      LICENSE
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="PAGE NEEDED" href="../../../../PAGE_NEEDED/">
+      PAGE NEEDED
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Anatomy</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="README" href="../../../../anatomy/README/">
+      README
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section">myApp</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Gruntfile.js" href="../../../../anatomy/myApp/Gruntfile.js/">
+      Gruntfile.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="README.md" href="../../../../anatomy/myApp/README.md/">
+      README.md
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="App.js" href="../../../../anatomy/myApp/app.js/">
+      App.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Gitignore" href="../../../../anatomy/myApp/gitignore/">
+      Gitignore
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="myApp" href="../../../../anatomy/myApp/myApp/">
+      myApp
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Package.json" href="../../../../anatomy/myApp/package.json/">
+      Package.json
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sailsrc" href="../../../../anatomy/myApp/sailsrc/">
+      Sailsrc
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section">.tmp</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title=".tmp" href="../../../../anatomy/myApp/.tmp/.tmp/">
+      .tmp
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Public</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Public" href="../../../../anatomy/myApp/.tmp/public/public/">
+      Public
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Api</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Api" href="../../../../anatomy/myApp/api/api/">
+      Api
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Controllers</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="UserController.js" href="../../../../anatomy/myApp/api/controllers/UserController.js/">
+      UserController.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Controllers" href="../../../../anatomy/myApp/api/controllers/controllers/">
+      Controllers
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Gitkeep" href="../../../../anatomy/myApp/api/controllers/gitkeep/">
+      Gitkeep
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Hooks</span>
+    <ul>
+      
+        
+  <li>
+    <span class="section">myHook</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Index.js" href="../../../../anatomy/myApp/api/hooks/myHook/index.js/">
+      Index.js
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Models</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="User.js" href="../../../../anatomy/myApp/api/models/User.js/">
+      User.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Gitkeep" href="../../../../anatomy/myApp/api/models/gitkeep/">
+      Gitkeep
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Models" href="../../../../anatomy/myApp/api/models/models/">
+      Models
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Policies</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Policies" href="../../../../anatomy/myApp/api/policies/policies/">
+      Policies
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="sessionAuth.js" href="../../../../anatomy/myApp/api/policies/sessionAuth.js/">
+      sessionAuth.js
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Responses</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="badRequest.js" href="../../../../anatomy/myApp/api/responses/badRequest.js/">
+      badRequest.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Forbidden.js" href="../../../../anatomy/myApp/api/responses/forbidden.js/">
+      Forbidden.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="notFound.js" href="../../../../anatomy/myApp/api/responses/notFound.js/">
+      notFound.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Ok.js" href="../../../../anatomy/myApp/api/responses/ok.js/">
+      Ok.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Responses" href="../../../../anatomy/myApp/api/responses/responses/">
+      Responses
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="serverError.js" href="../../../../anatomy/myApp/api/responses/serverError.js/">
+      serverError.js
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Services</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Gitkeep" href="../../../../anatomy/myApp/api/services/gitkeep/">
+      Gitkeep
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Services" href="../../../../anatomy/myApp/api/services/services/">
+      Services
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Assets</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Assets" href="../../../../anatomy/myApp/assets/assets/">
+      Assets
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Favicon.ico" href="../../../../anatomy/myApp/assets/favicon.ico/">
+      Favicon.ico
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Robots.txt" href="../../../../anatomy/myApp/assets/robots.txt/">
+      Robots.txt
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section"> templates</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title=" templates" href="../../../../anatomy/myApp/assets/_templates/_templates/">
+       templates
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Gitkeep" href="../../../../anatomy/myApp/assets/_templates/gitkeep/">
+      Gitkeep
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Images</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Gitkeep" href="../../../../anatomy/myApp/assets/images/gitkeep/">
+      Gitkeep
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Images" href="../../../../anatomy/myApp/assets/images/images/">
+      Images
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Js</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Js" href="../../../../anatomy/myApp/assets/js/js/">
+      Js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Dependencies</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Dependencies" href="../../../../anatomy/myApp/assets/js/dependencies/dependencies/">
+      Dependencies
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.io.js" href="../../../../anatomy/myApp/assets/js/dependencies/sails.io.js/">
+      Sails.io.js
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Styles</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Importer.less" href="../../../../anatomy/myApp/assets/styles/importer.less/">
+      Importer.less
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Styles" href="../../../../anatomy/myApp/assets/styles/styles/">
+      Styles
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Config</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Blueprints.js" href="../../../../anatomy/myApp/config/blueprints.js/">
+      Blueprints.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Bootstrap.js" href="../../../../anatomy/myApp/config/bootstrap.js/">
+      Bootstrap.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Config" href="../../../../anatomy/myApp/config/config/">
+      Config
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Connections.js" href="../../../../anatomy/myApp/config/connections.js/">
+      Connections.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Cors.js" href="../../../../anatomy/myApp/config/cors.js/">
+      Cors.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Csrf.js" href="../../../../anatomy/myApp/config/csrf.js/">
+      Csrf.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Globals.js" href="../../../../anatomy/myApp/config/globals.js/">
+      Globals.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Http.js" href="../../../../anatomy/myApp/config/http.js/">
+      Http.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="I18n.js" href="../../../../anatomy/myApp/config/i18n.js/">
+      I18n.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Local.js" href="../../../../anatomy/myApp/config/local.js/">
+      Local.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Log.js" href="../../../../anatomy/myApp/config/log.js/">
+      Log.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Models.js" href="../../../../anatomy/myApp/config/models.js/">
+      Models.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Policies.js" href="../../../../anatomy/myApp/config/policies.js/">
+      Policies.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Routes.js" href="../../../../anatomy/myApp/config/routes.js/">
+      Routes.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Session.js" href="../../../../anatomy/myApp/config/session.js/">
+      Session.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sockets.js" href="../../../../anatomy/myApp/config/sockets.js/">
+      Sockets.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Views.js" href="../../../../anatomy/myApp/config/views.js/">
+      Views.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Env</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Env" href="../../../../anatomy/myApp/config/env/env/">
+      Env
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Production.js" href="../../../../anatomy/myApp/config/env/production.js/">
+      Production.js
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Locales</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="De.json" href="../../../../anatomy/myApp/config/locales/de.json/">
+      De.json
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="En.json" href="../../../../anatomy/myApp/config/locales/en.json/">
+      En.json
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Es.json" href="../../../../anatomy/myApp/config/locales/es.json/">
+      Es.json
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Fr.json" href="../../../../anatomy/myApp/config/locales/fr.json/">
+      Fr.json
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Locales" href="../../../../anatomy/myApp/config/locales/locales/">
+      Locales
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Tasks</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="README.md" href="../../../../anatomy/myApp/tasks/README.md/">
+      README.md
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Pipeline.js" href="../../../../anatomy/myApp/tasks/pipeline.js/">
+      Pipeline.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Tasks" href="../../../../anatomy/myApp/tasks/tasks/">
+      Tasks
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Config</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Clean.js" href="../../../../anatomy/myApp/tasks/config/clean.js/">
+      Clean.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Coffee.js" href="../../../../anatomy/myApp/tasks/config/coffee.js/">
+      Coffee.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Concat.js" href="../../../../anatomy/myApp/tasks/config/concat.js/">
+      Concat.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Config" href="../../../../anatomy/myApp/tasks/config/config/">
+      Config
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Copy.js" href="../../../../anatomy/myApp/tasks/config/copy.js/">
+      Copy.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Cssmin.js" href="../../../../anatomy/myApp/tasks/config/cssmin.js/">
+      Cssmin.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Jst.js" href="../../../../anatomy/myApp/tasks/config/jst.js/">
+      Jst.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Less.js" href="../../../../anatomy/myApp/tasks/config/less.js/">
+      Less.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails linker.js" href="../../../../anatomy/myApp/tasks/config/sails-linker.js/">
+      Sails linker.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sync.js" href="../../../../anatomy/myApp/tasks/config/sync.js/">
+      Sync.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Uglify.js" href="../../../../anatomy/myApp/tasks/config/uglify.js/">
+      Uglify.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Watch.js" href="../../../../anatomy/myApp/tasks/config/watch.js/">
+      Watch.js
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Register</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Build.js" href="../../../../anatomy/myApp/tasks/register/build.js/">
+      Build.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="buildProd.js" href="../../../../anatomy/myApp/tasks/register/buildProd.js/">
+      buildProd.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="compileAssets.js" href="../../../../anatomy/myApp/tasks/register/compileAssets.js/">
+      compileAssets.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Default.js" href="../../../../anatomy/myApp/tasks/register/default.js/">
+      Default.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="linkAssets.js" href="../../../../anatomy/myApp/tasks/register/linkAssets.js/">
+      linkAssets.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="linkAssetsBuild.js" href="../../../../anatomy/myApp/tasks/register/linkAssetsBuild.js/">
+      linkAssetsBuild.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="linkAssetsBuildProd.js" href="../../../../anatomy/myApp/tasks/register/linkAssetsBuildProd.js/">
+      linkAssetsBuildProd.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Prod.js" href="../../../../anatomy/myApp/tasks/register/prod.js/">
+      Prod.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Register" href="../../../../anatomy/myApp/tasks/register/register/">
+      Register
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="syncAssets.js" href="../../../../anatomy/myApp/tasks/register/syncAssets.js/">
+      syncAssets.js
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Views</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="403.ejs" href="../../../../anatomy/myApp/views/403.ejs/">
+      403.ejs
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="404.ejs" href="../../../../anatomy/myApp/views/404.ejs/">
+      404.ejs
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="500.ejs" href="../../../../anatomy/myApp/views/500.ejs/">
+      500.ejs
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Homepage.ejs" href="../../../../anatomy/myApp/views/homepage.ejs/">
+      Homepage.ejs
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Layout.ejs" href="../../../../anatomy/myApp/views/layout.ejs/">
+      Layout.ejs
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Views" href="../../../../anatomy/myApp/views/views/">
+      Views
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Concepts</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="README" href="../../../../concepts/README/">
+      README
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section">0home</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="0home" href="../../../../concepts/0home/0home/">
+      0home
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Assets</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Assets" href="../../../../concepts/Assets/Assets/">
+      Assets
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="DefaultTasks" href="../../../../concepts/Assets/DefaultTasks/">
+      DefaultTasks
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="DisablingGrunt" href="../../../../concepts/Assets/DisablingGrunt/">
+      DisablingGrunt
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="TaskAutomation" href="../../../../concepts/Assets/TaskAutomation/">
+      TaskAutomation
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Blueprints</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Blueprint Actions" href="../../../../concepts/Blueprints/Blueprint Actions/">
+      Blueprint Actions
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Blueprint Routes" href="../../../../concepts/Blueprints/Blueprint Routes/">
+      Blueprint Routes
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Blueprints" href="../../../../concepts/Blueprints/Blueprints/">
+      Blueprints
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Configuration</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Configuration" href="../../../../concepts/Configuration/Configuration/">
+      Configuration
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Localjsfile" href="../../../../concepts/Configuration/localjsfile/">
+      Localjsfile
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Usingsailsrcfiles" href="../../../../concepts/Configuration/usingsailsrcfiles/">
+      Usingsailsrcfiles
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Controllers</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Controllers" href="../../../../concepts/Controllers/Controllers/">
+      Controllers
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="GeneratingControllers" href="../../../../concepts/Controllers/GeneratingControllers/">
+      GeneratingControllers
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="RoutingToControllers" href="../../../../concepts/Controllers/RoutingToControllers/">
+      RoutingToControllers
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Custom Responses</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="AddingCustomResponse" href="../../../../concepts/Custom Responses/AddingCustomResponse/">
+      AddingCustomResponse
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Custom Responses" href="../../../../concepts/Custom Responses/Custom Responses/">
+      Custom Responses
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="DefaultResponses" href="../../../../concepts/Custom Responses/DefaultResponses/">
+      DefaultResponses
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Deployment</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Deployment" href="../../../../concepts/Deployment/Deployment/">
+      Deployment
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="FAQ" href="../../../../concepts/Deployment/FAQ/">
+      FAQ
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Hosting" href="../../../../concepts/Deployment/Hosting/">
+      Hosting
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Scaling" href="../../../../concepts/Deployment/Scaling/">
+      Scaling
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">File Uploads</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="File Uploads" href="../../../../concepts/File Uploads/File Uploads/">
+      File Uploads
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Uploading to amazon s3" href="../../../../concepts/File Uploads/uploading-to-amazon-s3/">
+      Uploading to amazon s3
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Uploading to mongo gridfs" href="../../../../concepts/File Uploads/uploading-to-mongo-gridfs/">
+      Uploading to mongo gridfs
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Globals</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="DisablingGlobals" href="../../../../concepts/Globals/DisablingGlobals/">
+      DisablingGlobals
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Globals" href="../../../../concepts/Globals/Globals/">
+      Globals
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Internationalization</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Internationalization" href="../../../../concepts/Internationalization/Internationalization/">
+      Internationalization
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Locales" href="../../../../concepts/Internationalization/Locales/">
+      Locales
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="TranslatingDynamicContent" href="../../../../concepts/Internationalization/TranslatingDynamicContent/">
+      TranslatingDynamicContent
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Logging</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Custom log messages" href="../../../../concepts/Logging/Custom log messages/">
+      Custom log messages
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Logging" href="../../../../concepts/Logging/Logging/">
+      Logging
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Middleware</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="ConventionalDefaults" href="../../../../concepts/Middleware/ConventionalDefaults/">
+      ConventionalDefaults
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Middleware" href="../../../../concepts/Middleware/Middleware/">
+      Middleware
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">ORM</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Attributes" href="../../../../concepts/ORM/Attributes/">
+      Attributes
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Lifecyclecallbacks" href="../../../../concepts/ORM/Lifecyclecallbacks/">
+      Lifecyclecallbacks
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Models" href="../../../../concepts/ORM/Models/">
+      Models
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="ORM" href="../../../../concepts/ORM/ORM/">
+      ORM
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Querylanguage" href="../../../../concepts/ORM/Querylanguage/">
+      Querylanguage
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Validations" href="../../../../concepts/ORM/Validations/">
+      Validations
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Model settings" href="../../../../concepts/ORM/model-settings/">
+      Model settings
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Associations</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Associations" href="../../../../concepts/ORM/Associations/Associations/">
+      Associations
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Dominance" href="../../../../concepts/ORM/Associations/Dominance/">
+      Dominance
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="ManytoMany" href="../../../../concepts/ORM/Associations/ManytoMany/">
+      ManytoMany
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="OneWayAssociation" href="../../../../concepts/ORM/Associations/OneWayAssociation/">
+      OneWayAssociation
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="OnetoMany" href="../../../../concepts/ORM/Associations/OnetoMany/">
+      OnetoMany
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="OnetoOne" href="../../../../concepts/ORM/Associations/OnetoOne/">
+      OnetoOne
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="ThroughAssociations" href="../../../../concepts/ORM/Associations/ThroughAssociations/">
+      ThroughAssociations
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Policies</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Policies" href="../../../../concepts/Policies/Policies/">
+      Policies
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="SailsAndPassport" href="../../../../concepts/Policies/SailsAndPassport/">
+      SailsAndPassport
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Programmatic Usage</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Programmatic Usage" href="../../../../concepts/Programmatic Usage/Programmatic Usage/">
+      Programmatic Usage
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Tips and Tricks" href="../../../../concepts/Programmatic Usage/Tips and Tricks/">
+      Tips and Tricks
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Realtime</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Multi server environments" href="../../../../concepts/Realtime/Multi-server environments/">
+      Multi server environments
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="On the client" href="../../../../concepts/Realtime/On the client/">
+      On the client
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="On the server" href="../../../../concepts/Realtime/On the server/">
+      On the server
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Realtime" href="../../../../concepts/Realtime/Realtime/">
+      Realtime
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Routes</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="RouteTargetSyntax" href="../../../../concepts/Routes/RouteTargetSyntax/">
+      RouteTargetSyntax
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Routes" href="../../../../concepts/Routes/Routes/">
+      Routes
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="URLSlugs" href="../../../../concepts/Routes/URLSlugs/">
+      URLSlugs
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Security</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="CORS" href="../../../../concepts/Security/CORS/">
+      CORS
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="CSRF" href="../../../../concepts/Security/CSRF/">
+      CSRF
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Clickjacking" href="../../../../concepts/Security/Clickjacking/">
+      Clickjacking
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="ContentSecurityPolicy" href="../../../../concepts/Security/ContentSecurityPolicy/">
+      ContentSecurityPolicy
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="DDOS" href="../../../../concepts/Security/DDOS/">
+      DDOS
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="P3P" href="../../../../concepts/Security/P3P/">
+      P3P
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Security" href="../../../../concepts/Security/Security/">
+      Security
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="SocketHijacking" href="../../../../concepts/Security/SocketHijacking/">
+      SocketHijacking
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="StrictTransportSecurity" href="../../../../concepts/Security/StrictTransportSecurity/">
+      StrictTransportSecurity
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="XSS" href="../../../../concepts/Security/XSS/">
+      XSS
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Services</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="CreatingAService" href="../../../../concepts/Services/CreatingAService/">
+      CreatingAService
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Services" href="../../../../concepts/Services/Services/">
+      Services
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Sessions</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Sessions" href="../../../../concepts/Sessions/sessions/">
+      Sessions
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Testing</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Testing" href="../../../../concepts/Testing/Testing/">
+      Testing
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Upgrading</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="To0.10" href="../../../../concepts/Upgrading/To0.10/">
+      To0.10
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="To0.11" href="../../../../concepts/Upgrading/To0.11/">
+      To0.11
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="To0.12" href="../../../../concepts/Upgrading/To0.12/">
+      To0.12
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Upgrading" href="../../../../concepts/Upgrading/Upgrading/">
+      Upgrading
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Views</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Layouts" href="../../../../concepts/Views/Layouts/">
+      Layouts
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Locals" href="../../../../concepts/Views/Locals/">
+      Locals
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Partials" href="../../../../concepts/Views/Partials/">
+      Partials
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="ViewEngines" href="../../../../concepts/Views/ViewEngines/">
+      ViewEngines
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Views" href="../../../../concepts/Views/Views/">
+      Views
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Extending sails</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Extending sails" href="../../../../concepts/extending-sails/extending-sails/">
+      Extending sails
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Adapters</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Adapters" href="../../../../concepts/extending-sails/Adapters/Adapters/">
+      Adapters
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="adapterList" href="../../../../concepts/extending-sails/Adapters/adapterList/">
+      adapterList
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="customAdapters" href="../../../../concepts/extending-sails/Adapters/customAdapters/">
+      customAdapters
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Generators</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Generators" href="../../../../concepts/extending-sails/Generators/Generators/">
+      Generators
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="customGenerators" href="../../../../concepts/extending-sails/Generators/customGenerators/">
+      customGenerators
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="generatorList" href="../../../../concepts/extending-sails/Generators/generatorList/">
+      generatorList
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Hooks</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Hooks" href="../../../../concepts/extending-sails/Hooks/Hooks/">
+      Hooks
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Installablehooks" href="../../../../concepts/extending-sails/Hooks/installablehooks/">
+      Installablehooks
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Projecthooks" href="../../../../concepts/extending-sails/Hooks/projecthooks/">
+      Projecthooks
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Usinghooks" href="../../../../concepts/extending-sails/Hooks/usinghooks/">
+      Usinghooks
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Hookspec</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Configure" href="../../../../concepts/extending-sails/Hooks/hookspec/configure/">
+      Configure
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Defaults" href="../../../../concepts/extending-sails/Hooks/hookspec/defaults/">
+      Defaults
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Hookspec" href="../../../../concepts/extending-sails/Hooks/hookspec/hookspec/">
+      Hookspec
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Initialize" href="../../../../concepts/extending-sails/Hooks/hookspec/initialize/">
+      Initialize
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Routes" href="../../../../concepts/extending-sails/Hooks/hookspec/routes/">
+      Routes
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Contributing</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Adapter specification" href="../../../../contributing/adapter-specification/">
+      Adapter specification
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Intro to custom adapters" href="../../../../contributing/intro-to-custom-adapters/">
+      Intro to custom adapters
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sending pull requests" href="../../../../contributing/sending-pull-requests/">
+      Sending pull requests
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Stability index" href="../../../../contributing/stability-index/">
+      Stability index
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Getting started</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="NewToNode" href="../../../../getting-started/NewToNode/">
+      NewToNode
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="WhatIsSails" href="../../../../getting-started/WhatIsSails/">
+      WhatIsSails
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Getting started" href="../../../../getting-started/getting-started/">
+      Getting started
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Projects</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="README" href="../../../../projects/README/">
+      README
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Project template" href="../../../../projects/project-template/">
+      Project template
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Reference</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="README" href="../../../README/">
+      README
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section">0home</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="0home" href="../../../0home/0home/">
+      0home
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Application</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Application" href="../../../application/application/">
+      Application
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Events" href="../../../application/events/">
+      Events
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Lifecycle" href="../../../application/lifecycle/">
+      Lifecycle
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="sails.getBaseUrl" href="../../../application/sails.getBaseUrl/">
+      sails.getBaseUrl
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="sails.getRouteFor" href="../../../application/sails.getRouteFor/">
+      sails.getRouteFor
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="sails.getUrlFor" href="../../../application/sails.getUrlFor/">
+      sails.getUrlFor
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.lift" href="../../../application/sails.lift/">
+      Sails.lift
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.load" href="../../../application/sails.load/">
+      Sails.load
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.log" href="../../../application/sails.log/">
+      Sails.log
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.lower" href="../../../application/sails.lower/">
+      Sails.lower
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.request" href="../../../application/sails.request/">
+      Sails.request
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Blueprint api</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Add" href="../../../blueprint-api/Add/">
+      Add
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Create" href="../../../blueprint-api/Create/">
+      Create
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Destroy" href="../../../blueprint-api/Destroy/">
+      Destroy
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Find" href="../../../blueprint-api/Find/">
+      Find
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="FindOne" href="../../../blueprint-api/FindOne/">
+      FindOne
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Populate" href="../../../blueprint-api/Populate/">
+      Populate
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Remove" href="../../../blueprint-api/Remove/">
+      Remove
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Update" href="../../../blueprint-api/Update/">
+      Update
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Blueprint api" href="../../../blueprint-api/blueprint-api/">
+      Blueprint api
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Cli</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Cli" href="../../../cli/cli/">
+      Cli
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sailsconsole" href="../../../cli/sailsconsole/">
+      Sailsconsole
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sailsdebug" href="../../../cli/sailsdebug/">
+      Sailsdebug
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sailsgenerate" href="../../../cli/sailsgenerate/">
+      Sailsgenerate
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sailslift" href="../../../cli/sailslift/">
+      Sailslift
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sailsnew" href="../../../cli/sailsnew/">
+      Sailsnew
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sailsversion" href="../../../cli/sailsversion/">
+      Sailsversion
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Req</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Req.accepted" href="../../../req/req.accepted/">
+      Req.accepted
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="req.acceptedCharsets" href="../../../req/req.acceptedCharsets/">
+      req.acceptedCharsets
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="req.acceptedLanguages" href="../../../req/req.acceptedLanguages/">
+      req.acceptedLanguages
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.accepts" href="../../../req/req.accepts/">
+      Req.accepts
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="req.acceptsCharset" href="../../../req/req.acceptsCharset/">
+      req.acceptsCharset
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="req.acceptsLanguage" href="../../../req/req.acceptsLanguage/">
+      req.acceptsLanguage
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="req.allParams" href="../../../req/req.allParams/">
+      req.allParams
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.body" href="../../../req/req.body/">
+      Req.body
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.cookies" href="../../../req/req.cookies/">
+      Req.cookies
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.file" href="../../../req/req.file/">
+      Req.file
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.fresh" href="../../../req/req.fresh/">
+      Req.fresh
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.get" href="../../../req/req.get/">
+      Req.get
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.headers" href="../../../req/req.headers/">
+      Req.headers
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.host" href="../../../req/req.host/">
+      Req.host
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.ip" href="../../../req/req.ip/">
+      Req.ip
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.ips" href="../../../req/req.ips/">
+      Req.ips
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.is" href="../../../req/req.is/">
+      Req.is
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="req.isSocket" href="../../../req/req.isSocket/">
+      req.isSocket
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req" href="../../../req/req/">
+      Req
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.method" href="../../../req/req.method/">
+      Req.method
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.param" href="../../../req/req.param/">
+      Req.param
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.params" href="../../../req/req.params/">
+      Req.params
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.path" href="../../../req/req.path/">
+      Req.path
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.protocol" href="../../../req/req.protocol/">
+      Req.protocol
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.query" href="../../../req/req.query/">
+      Req.query
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.secure" href="../../../req/req.secure/">
+      Req.secure
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="req.signedCookies" href="../../../req/req.signedCookies/">
+      req.signedCookies
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.socket" href="../../../req/req.socket/">
+      Req.socket
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.subdomains" href="../../../req/req.subdomains/">
+      Req.subdomains
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.url" href="../../../req/req.url/">
+      Req.url
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="req.wantsJSON" href="../../../req/req.wantsJSON/">
+      req.wantsJSON
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.xhr" href="../../../req/req.xhr/">
+      Req.xhr
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Req.options</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Req.options" href="../../../req/req.options/req.options/">
+      Req.options
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.options.values" href="../../../req/req.options/req.options.values/">
+      Req.options.values
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Req.options.where" href="../../../req/req.options/req.options.where/">
+      Req.options.where
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Res</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Res.attachment" href="../../../res/res.attachment/">
+      Res.attachment
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="res.badRequest" href="../../../res/res.badRequest/">
+      res.badRequest
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="res.clearCookie" href="../../../res/res.clearCookie/">
+      res.clearCookie
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Res.cookie" href="../../../res/res.cookie/">
+      Res.cookie
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Res.created" href="../../../res/res.created/">
+      Res.created
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Res.forbidden" href="../../../res/res.forbidden/">
+      Res.forbidden
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Res.get" href="../../../res/res.get/">
+      Res.get
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Res.json" href="../../../res/res.json/">
+      Res.json
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Res.jsonp" href="../../../res/res.jsonp/">
+      Res.jsonp
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Res.location" href="../../../res/res.location/">
+      Res.location
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Res" href="../../../res/res/">
+      Res
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Res.negotiate" href="../../../res/res.negotiate/">
+      Res.negotiate
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="res.notFound" href="../../../res/res.notFound/">
+      res.notFound
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Res.ok" href="../../../res/res.ok/">
+      Res.ok
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Res.redirect" href="../../../res/res.redirect/">
+      Res.redirect
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Res.send" href="../../../res/res.send/">
+      Res.send
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="res.serverError" href="../../../res/res.serverError/">
+      res.serverError
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Res.set" href="../../../res/res.set/">
+      Res.set
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Res.status" href="../../../res/res.status/">
+      Res.status
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Res.type" href="../../../res/res.type/">
+      Res.type
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Res.view" href="../../../res/res.view/">
+      Res.view
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Sails.config</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Miscellaneous" href="../../../sails.config/miscellaneous/">
+      Miscellaneous
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.config.blueprints" href="../../../sails.config/sails.config.blueprints/">
+      Sails.config.blueprints
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.config.bootstrap" href="../../../sails.config/sails.config.bootstrap/">
+      Sails.config.bootstrap
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.config.connections" href="../../../sails.config/sails.config.connections/">
+      Sails.config.connections
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.config.cors" href="../../../sails.config/sails.config.cors/">
+      Sails.config.cors
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.config.csrf" href="../../../sails.config/sails.config.csrf/">
+      Sails.config.csrf
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.config.globals" href="../../../sails.config/sails.config.globals/">
+      Sails.config.globals
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.config.http" href="../../../sails.config/sails.config.http/">
+      Sails.config.http
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.config.i18n" href="../../../sails.config/sails.config.i18n/">
+      Sails.config.i18n
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.config.log" href="../../../sails.config/sails.config.log/">
+      Sails.config.log
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.config" href="../../../sails.config/sails.config/">
+      Sails.config
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.config.models" href="../../../sails.config/sails.config.models/">
+      Sails.config.models
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.config.policies" href="../../../sails.config/sails.config.policies/">
+      Sails.config.policies
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.config.routes" href="../../../sails.config/sails.config.routes/">
+      Sails.config.routes
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.config.session" href="../../../sails.config/sails.config.session/">
+      Sails.config.session
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.config.sockets" href="../../../sails.config/sails.config.sockets/">
+      Sails.config.sockets
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.config.views" href="../../../sails.config/sails.config.views/">
+      Sails.config.views
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Waterline</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Waterline" href="../../../waterline/waterline/">
+      Waterline
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Models</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Count" href="../../../waterline/models/count/">
+      Count
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Create" href="../../../waterline/models/create/">
+      Create
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Destroy" href="../../../waterline/models/destroy/">
+      Destroy
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Find" href="../../../waterline/models/find/">
+      Find
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="findOne" href="../../../waterline/models/findOne/">
+      findOne
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="findOrCreate" href="../../../waterline/models/findOrCreate/">
+      findOrCreate
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Models" href="../../../waterline/models/models/">
+      Models
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Native" href="../../../waterline/models/native/">
+      Native
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Query" href="../../../waterline/models/query/">
+      Query
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Stream" href="../../../waterline/models/stream/">
+      Stream
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Update" href="../../../waterline/models/update/">
+      Update
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Populated values</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Add" href="../../../waterline/populated-values/add/">
+      Add
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Populated values" href="../../../waterline/populated-values/populated-values/">
+      Populated values
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Remove" href="../../../waterline/populated-values/remove/">
+      Remove
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Queries</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Exec" href="../../../waterline/queries/exec/">
+      Exec
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Limit" href="../../../waterline/queries/limit/">
+      Limit
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Populate" href="../../../waterline/queries/populate/">
+      Populate
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Queries" href="../../../waterline/queries/queries/">
+      Queries
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Skip" href="../../../waterline/queries/skip/">
+      Skip
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sort" href="../../../waterline/queries/sort/">
+      Sort
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Where" href="../../../waterline/queries/where/">
+      Where
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Records</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Records" href="../../../waterline/records/records/">
+      Records
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Save" href="../../../waterline/records/save/">
+      Save
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="toJSON" href="../../../waterline/records/toJSON/">
+      toJSON
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="toObject" href="../../../waterline/records/toObject/">
+      toObject
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Websockets</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Websockets" href="../../websockets/">
+      Websockets
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Resourceful pubsub</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Message" href="../../resourceful-pubsub/message/">
+      Message
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="publishAdd" href="../../resourceful-pubsub/publishAdd/">
+      publishAdd
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="publishCreate" href="../../resourceful-pubsub/publishCreate/">
+      publishCreate
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="publishDestroy" href="../../resourceful-pubsub/publishDestroy/">
+      publishDestroy
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="publishRemove" href="../../resourceful-pubsub/publishRemove/">
+      publishRemove
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="publishUpdate" href="../../resourceful-pubsub/publishUpdate/">
+      publishUpdate
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Resourceful pubsub" href="../../resourceful-pubsub/resourceful-pubsub/">
+      Resourceful pubsub
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Subscribe" href="../../resourceful-pubsub/subscribe/">
+      Subscribe
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Subscribers" href="../../resourceful-pubsub/subscribers/">
+      Subscribers
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Unsubscribe" href="../../resourceful-pubsub/unsubscribe/">
+      Unsubscribe
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Unwatch" href="../../resourceful-pubsub/unwatch/">
+      Unwatch
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Watch" href="../../resourceful-pubsub/watch/">
+      Watch
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Sails.io.js</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Io.sails" href="../../sails.io.js/io.sails/">
+      Io.sails
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Io.socket" href="../../sails.io.js/io.socket/">
+      Io.socket
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Io.socket.off" href="../../sails.io.js/io.socket.off/">
+      Io.socket.off
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Io.socket.on" href="../../sails.io.js/io.socket.on/">
+      Io.socket.on
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.io.js" href="../../sails.io.js/sails.io.js/">
+      Sails.io.js
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Socket.delete" href="../../sails.io.js/socket.delete/">
+      Socket.delete
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Socket.get" href="../../sails.io.js/socket.get/">
+      Socket.get
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Socket.post" href="../../sails.io.js/socket.post/">
+      Socket.post
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Socket.put" href="../../sails.io.js/socket.put/">
+      Socket.put
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Socket.request" href="../../sails.io.js/socket.request/">
+      Socket.request
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section">SailsSocket</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="SailsSocket" href="../../sails.io.js/SailsSocket/SailsSocket/">
+      SailsSocket
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Methods" href="../../sails.io.js/SailsSocket/methods/">
+      Methods
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Properties" href="../../sails.io.js/SailsSocket/properties/">
+      Properties
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Sails.sockets</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="sails.sockets.addRoomMembersToRooms" href="../sails.sockets.addRoomMembersToRooms/">
+      sails.sockets.addRoomMembersToRooms
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.sockets.blast" href="../sails.sockets.blast/">
+      Sails.sockets.blast
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.sockets.broadcast" href="../sails.sockets.broadcast/">
+      Sails.sockets.broadcast
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.sockets.emit" href="../sails.sockets.emit/">
+      Sails.sockets.emit
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.sockets.getid" href="../sails.sockets.getid/">
+      Sails.sockets.getid
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.sockets.id" href="../sails.sockets.id/">
+      Sails.sockets.id
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.sockets.join" href="../sails.sockets.join/">
+      Sails.sockets.join
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.sockets.leave" href="../sails.sockets.leave/">
+      Sails.sockets.leave
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="sails.sockets.leaveAll" href="../sails.sockets.leaveAll/">
+      sails.sockets.leaveAll
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.sockets" href="../sails.sockets/">
+      Sails.sockets
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="sails.sockets.removeRoomMembersFromRoom" href="../sails.sockets.removeRoomMembersFromRoom/">
+      sails.sockets.removeRoomMembersFromRoom
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.sockets.rooms" href="../sails.sockets.rooms/">
+      Sails.sockets.rooms
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="current" title="sails.sockets.socketRooms" href="./">
+      sails.sockets.socketRooms
+    </a>
+    
+      
+        
+      
+      
+        <ul>
+          
+            <li class="anchor">
+              <a title="Purpose" href="#purpose">
+                Purpose
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Overview" href="#overview">
+                Overview
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Example Usage" href="#example-usage">
+                Example Usage
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Notes" href="#notes">
+                Notes
+              </a>
+            </li>
+          
+        </ul>
+      
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Sails.sockets.subscribers" href="../sails.sockets.subscribers/">
+      Sails.sockets.subscribers
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Security</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="README" href="../../../../security/README/">
+      README
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="SAILS SECURITY POLICY" href="../../../../security/SAILS-SECURITY-POLICY/">
+      SAILS SECURITY POLICY
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Status</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Req" href="../../../../status/req/">
+      Req
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Res" href="../../../../status/res/">
+      Res
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Plugins</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="README" href="../../../../status/plugins/README/">
+      README
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Support</span>
+    <ul>
+      
+        
+  <li>
+    <span class="section">Irc</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="configuringClient" href="../../../../support/irc/configuringClient/">
+      configuringClient
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="grabClient" href="../../../../support/irc/grabClient/">
+      grabClient
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Irc" href="../../../../support/irc/irc/">
+      Irc
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="sailsTroll" href="../../../../support/irc/sailsTroll/">
+      sailsTroll
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Userguides</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Contributing" href="../../../../userguides/contributing/">
+      Contributing
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="guideStub" href="../../../../userguides/guideStub/">
+      guideStub
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Userguides" href="../../../../userguides/userguides/">
+      Userguides
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <span class="section">Deployment</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Deployment" href="../../../../userguides/deployment/deployment/">
+      Deployment
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Nodejitsu" href="../../../../userguides/deployment/nodejitsu/">
+      Nodejitsu
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Openshift" href="../../../../userguides/deployment/openshift/">
+      Openshift
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Version notes</span>
+    <ul>
+      
+        
+  <li>
+    <span class="section">0.10.x</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="0.10.x" href="../../../../version-notes/0.10.x/0.10.x/">
+      0.10.x
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Changelog0.10.0 rc9" href="../../../../version-notes/0.10.x/Changelog0.10.0-rc9/">
+      Changelog0.10.0 rc9
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Changelog0.10x" href="../../../../version-notes/0.10.x/Changelog0.10x/">
+      Changelog0.10x
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">0.11.x</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="0.11.x" href="../../../../version-notes/0.11.x/0.11.x/">
+      0.11.x
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="MigrationGuide0.11" href="../../../../version-notes/0.11.x/MigrationGuide0.11/">
+      MigrationGuide0.11
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">0.12.x</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="0.12.x" href="../../../../version-notes/0.12.x/0.12.x/">
+      0.12.x
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Migration guide 0.12" href="../../../../version-notes/0.12.x/migration-guide-0.12/">
+      Migration guide 0.12
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">0.8.x</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="0.8.x" href="../../../../version-notes/0.8.x/0.8.x/">
+      0.8.x
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Changelog0.8.7x" href="../../../../version-notes/0.8.x/Changelog0.8.7x/">
+      Changelog0.8.7x
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Changelog0.8.8x" href="../../../../version-notes/0.8.x/Changelog0.8.8x/">
+      Changelog0.8.8x
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Changelog0.8.9" href="../../../../version-notes/0.8.x/Changelog0.8.9/">
+      Changelog0.8.9
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="ChangelogPre 0.8.77" href="../../../../version-notes/0.8.x/ChangelogPre-0.8.77/">
+      ChangelogPre 0.8.77
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li>
+    <span class="section">0.9.x</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="0.9.x" href="../../../../version-notes/0.9.x/0.9.x/">
+      0.9.x
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Changelog0.9.0" href="../../../../version-notes/0.9.x/Changelog0.9.0/">
+      Changelog0.9.0
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Changelog0.9.16" href="../../../../version-notes/0.9.x/Changelog0.9.16/">
+      Changelog0.9.16
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Changelog0.9.4" href="../../../../version-notes/0.9.x/Changelog0.9.4/">
+      Changelog0.9.4
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Changelog0.9.7" href="../../../../version-notes/0.9.x/Changelog0.9.7/">
+      Changelog0.9.7
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+        </ul>
+        
+          <hr>
+          <span class="section">The author</span>
+          <ul>
+            
+              
+              <li>
+                <a href="https://twitter.com/sailsjs" target="_blank" title="@sailsjs on Twitter">
+                  @sailsjs on Twitter
+                </a>
+              </li>
+            
+            
+              
+              <li>
+                <a href="https://github.com/balderdashy" target="_blank" title="@balderdashy on GitHub">
+                  @balderdashy on GitHub
+                </a>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+      </div>
+      <article class="article">
+        <div class="wrapper">
+          
+          <h1 id="sailssocketssocketrooms">sails.sockets.socketRooms()<a class="headerlink" href="#sailssocketssocketrooms" title="Permanent link">#</a></h1>
+<blockquote>
+<p><em><strong>This method is deprecated</strong>.  Please keep track of your rooms in app-level code.</em></p>
+</blockquote>
+<h3 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">#</a></h3>
+<p>Get the list of rooms a socket is subscribed to</p>
+<h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h3>
+<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">#</a></h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Description</th>
+<th>Accepted Data Types</th>
+<th>Required ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Socket</td>
+<td><code>object</code></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-usage">Example Usage<a class="headerlink" href="#example-usage" title="Permanent link">#</a></h3>
+<pre class="code"><code class="language-javascript">// Controller action
+
+getMyRooms: function(req, res) {
+    var roomNames = JSON.stringify(sails.sockets.socketRooms(req.socket));
+    res.json({
+      message: 'I am subscribed to: '+roomNames
+    });
+}</code></pre>
+
+
+<h3 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h3>
+<blockquote>
+<ul>
+<li>The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  <code>req.socket</code> also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure <code>req.isSocket == true</code> before using <code>req.socket</code> with this method.</li>
+</ul>
+</blockquote>
+<p><docmeta name="displayName" value="sails.sockets.socketRooms()">
+<docmeta name="isDeprecated" value="true"></p>
+          <aside class="copyright" role="note">
+            
+              Copyright (c) 2012-2016 Mike McNeil &ndash;
+            
+            Documentation built with
+            <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
+            using the
+            <a href="http://squidfunk.github.io/mkdocs-material/" target="_blank">
+              Material
+            </a>
+            theme.
+          </aside>
+          
+            <footer class="footer">
+              
+  <nav class="pagination" aria-label="Footer">
+    <div class="previous">
+      
+        <a href="../sails.sockets.rooms/" title="Sails.sockets.rooms">
+          <span class="direction">
+            Previous
+          </span>
+          <div class="page">
+            <div class="button button-previous" role="button" aria-label="Previous">
+              <i class="icon icon-back"></i>
+            </div>
+            <div class="stretch">
+              <div class="title">
+                Sails.sockets.rooms
+              </div>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+    <div class="next">
+      
+        <a href="../sails.sockets.subscribers/" title="Sails.sockets.subscribers">
+          <span class="direction">
+            Next
+          </span>
+          <div class="page">
+            <div class="stretch">
+              <div class="title">
+                Sails.sockets.subscribers
+              </div>
+            </div>
+            <div class="button button-next" role="button" aria-label="Next">
+              <i class="icon icon-forward"></i>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+  </nav>
+
+            </footer>
+          
+        </div>
+      </article>
+      <div class="results" role="status" aria-live="polite">
+        <div class="scrollable">
+          <div class="wrapper">
+            <div class="meta"></div>
+            <div class="list"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      var base_url = '../../../..';
+      var repo_id  = 'balderdashy/sails-docs';
+    </script>
+    <script src="../../../../assets/javascripts/application-997097ee0c.js"></script>
+    
+      <script src="../../../../status/plugins/adapters.js"></script>
+    
+      <script src="../../../../status/plugins/generators.js"></script>
+    
+      <script src="../../../../status/plugins/hooks.js"></script>
+    
+    
+  </body>
+</html>
